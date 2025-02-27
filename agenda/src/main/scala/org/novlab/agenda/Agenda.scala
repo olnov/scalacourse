@@ -1,24 +1,15 @@
 package org.novlab.agenda
 
 class Agenda (val meetings: List[Meeting]) {
-
-//  def printDaySchedule(day: String): Unit = {
-//    val meetingsForTheDay = meetings.filter(_.day == day)
-//    println(s"$day:")
-//    if (meetingsForTheDay.nonEmpty) {
-//      for (meeting <- meetingsForTheDay) println(s" ${meeting.time}: ${meeting.name}")
+  
+// Solution without grouping
+//  private def isMorning(time: String): Boolean = {
+//    if (time.contains("am")) {
+//      true
 //    } else {
-//      println(s"There are no meetings on ${day}")
+//      false
 //    }
 //  }
-
-  private def isMorning(time: String): Boolean = {
-    if (time.contains("am")) {
-      true
-    } else {
-      false
-    }
-  }
 
 
 //  def printDaySchedule(day: String): Unit = {
@@ -37,6 +28,7 @@ class Agenda (val meetings: List[Meeting]) {
 //    }
 //  }
 
+// Solution with grouping
   private def timePeriod(str: String):String = {
     if (str.contains("am")) {
       "morning"

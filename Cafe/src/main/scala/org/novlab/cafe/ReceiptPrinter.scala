@@ -10,8 +10,20 @@ class CafeDetails (
 class ReceiptPrinter(val cafe: CafeDetails, var order: Map[String, Int] = Map()) {
 
   def receipt: String = {
+    val totalPrice: Double = order.collect {
+      case (item, quantity) if cafe.prices contains(item) => cafe.prices(item) * quantity
+    }.sum
 
-    cafe.shopName
+    val orderLines: String = order.collect{
+      case (item, quantity) if cafe.prices contains(item) =>
+        val price = cafe.prices(item)
+        f"$item - ${quantity}x$price"
+    }.mkString("\r\n")
+
+    val totalLine: String = f"Total - $totalPrice"
+    val output: String = s"${cafe.shopName}\n$orderLines\n$totalLine"
+    
+    output
   }
 }
 

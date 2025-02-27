@@ -56,8 +56,8 @@ class ReceiptPrinterSpec extends AnyWordSpec with Matchers {
           Map("Cafe Latte" -> 1)
         )
         printer.receipt should include ("The Coffee Connection")
-//        printer.receipt should include("Cafe Latte")
-//        printer.receipt should include("4,75")
+        printer.receipt should include("Cafe Latte")
+        printer.receipt should include("4.75")
       }
       // add more tests here.
 
